@@ -14,6 +14,10 @@ class WikiParser:
         }
         R = self.S.get(url=self.URL, params=PARAMS)
         DATA = R.json()
+        page = DATA["parse"]["text"]["*"]
+        soup = BeautifulSoup.BeautifulSoup(page, "html.parser")
+        output = str(soup.p)[11 + len(name):len(name)+24]
+        return not(output == "may refer to:")
 
     def getPage(self, name):
         print("getting page : " + name)
@@ -42,7 +46,5 @@ def removeDuplicates(x):
 
 if __name__ == "__main__":
     wikiParser = WikiParser()
-    page = wikiParser.getPage("Pet door")
-    links = wikiParser.getLinksFromPage(page)
-    for link in links:
-        print(link)
+    print(wikiParser.pageExists("Gog"))
+    print(wikiParser.pageExists("Dog"))

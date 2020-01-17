@@ -19,6 +19,17 @@ class Game:
         self.score = 0
         self.visited= [start]
 
+    def isValid(self):
+        wikiParser = parser.WikiParser()
+        is_valid = True
+        if not wikiParser.pageExists(self.start):
+            print("tha page " + self.start + " doesn't exist")
+            is_valid = False
+        if not wikiParser.pageExists(self.end):
+            print("tha page " + self.end + " doesn't exist")
+            is_valid = False
+        return is_valid
+
     def randomPlayer(self):
         self.__init__(self.start, self.end)
         print("start :" + self.start + ", goal :" + self.end)
@@ -43,7 +54,6 @@ class Game:
         print("Start :" + self.start + ", Goal :" + self.end)
         wikiParser = parser.WikiParser()
         while self.current != self.end and self.score < self.max_iter:
-            print(self.score, self.max_iter)
             page = wikiParser.getPage(self.current)
             next_words = wikiParser.getLinksFromPage(page)
             max_similarity = 0
@@ -62,7 +72,7 @@ class Game:
                     self.current = self.end
                     self.visited.append(self.current)
                     self.score += 1
-                    print("I win")
+                    print("Found page :", self.end)
                     return
                 else: #select most similar
                     with warnings.catch_warnings():
