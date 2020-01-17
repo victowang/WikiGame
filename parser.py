@@ -16,8 +16,9 @@ class WikiParser:
         DATA = R.json()
         page = DATA["parse"]["text"]["*"]
         soup = BeautifulSoup.BeautifulSoup(page, "html.parser")
-        output = str(soup.p)[11 + len(name):len(name)+24]
-        return not(output == "may refer to:")
+        output = str(soup.p)
+        output = output[11 + len(name):len(name)+24]
+        return len(output) > 11 and not(output == "may refer to:")
 
     def getPage(self, name):
         print("getting page : " + name)

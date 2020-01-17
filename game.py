@@ -99,9 +99,9 @@ class Game:
             for word in next_words:
                 if word in self.visited:
                     next_words.remove(word)
-                if next_words == []:
-                    print("I am stuck")
-                    return
+            if next_words == []:
+                print("I am stuck")
+                return
 
             for word in next_words:
                 if self.end in next_words:
@@ -121,6 +121,7 @@ class Game:
             self.current=max_word
             self.score += 1
         print("I loose")
+        return
 
 
 
