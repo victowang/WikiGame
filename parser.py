@@ -6,6 +6,15 @@ class WikiParser:
     URL = "https://en.wikipedia.org/w/api.php"
     S = requests.Session()
 
+    def pageExists(self, name):
+        PARAMS = {
+            "action": "parse",
+            "page": name,
+            "format": "json"
+        }
+        R = self.S.get(url=self.URL, params=PARAMS)
+        DATA = R.json()
+
     def getPage(self, name):
         print("getting page : " + name)
         PARAMS = {
@@ -26,9 +35,10 @@ class WikiParser:
             # beginnings to avoid: Help: Wikipedia: Special: Category: Template: User talk:
             if ':' not in title:
                 titles.append(title)
-        return titles
+        return removeDuplicates(titles)
 
-
+def removeDuplicates(x):
+    return list(dict.fromkeys(x))
 
 if __name__ == "__main__":
     wikiParser = WikiParser()
