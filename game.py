@@ -49,7 +49,7 @@ class Game:
             self.visited.append(self.current)
             self.score += 1
 
-    def nlpPlayer(self):
+    def nlpMeanPlayer(self):
         self.__init__(self.start, self.end)
         print("Start :" + self.start + ", Goal :" + self.end)
         wikiParser = parser.WikiParser()
@@ -77,14 +77,52 @@ class Game:
                 else: #select most similar
                     with warnings.catch_warnings():
                         warnings.simplefilter("ignore")
-                        similarity = spacyTools.getSimilarity(word, self.end)
-                    if similarity > max_similarity:
+                        similarity = spacyTools.getMeanSimilarity(word, self.end)
+                    if similarity > max_similarity and not (word in self.visited):
                         max_similarity = similarity
                         max_word = word
             self.visited.append(max_word)
             self.current=max_word
             self.score += 1
         print("I loose")
+    def nlpMaxPlayer(self):
+        self.__init__(self.start, self.end)
+        print("Start :" + self.start + ", Goal :" + self.end)
+        wikiParser = parser.WikiParser()
+        while self.current != self.end and self.score < self.max_iter:
+            page = wikiParser.getPage(self.current)
+            next_words = wikiParser.getLinksFromPage(page)
+            max_similarity = 0
+            max_word = ""
+
+            # filter to prevent looping
+            for word in next_words:
+                if word in self.visited:
+                    next_words.remove(word)
+                if next_words == []:
+                    print("I am stuck")
+                    return
+
+            for word in next_words:
+                if self.end in next_words:
+                    self.current = self.end
+                    self.visited.append(self.current)
+                    self.score += 1
+                    print("Found page :", self.end)
+                    return
+                else: #select most similar
+                    with warnings.catch_warnings():
+                        warnings.simplefilter("ignore")
+                        similarity = spacyTools.getMaxSimilarity(word, self.end)
+                    if similarity > max_similarity and not (word in self.visited):
+                        max_similarity = similarity
+                        max_word = word
+            self.visited.append(max_word)
+            self.current=max_word
+            self.score += 1
+        print("I loose")
+
+
 
     # setters and getters
 

@@ -1,11 +1,10 @@
 import game
 
 if __name__ == "__main__":
-    g = game.Game("Pokémon", "Marie Antoinette")
-    #g = game.Game("Chicken", "Cartography")
+    g = game.Game("Christine (name)", "Durian")
     print("Game validity :", g.isValid())
-    g.set_max_iter(50)
+    g.set_max_iter(100)
     #g.randomPlayer()
-    g.nlpPlayer()
+    g.nlpMeanPlayer()
     print("path :", g.visited)
     print("score : ", g.score)
