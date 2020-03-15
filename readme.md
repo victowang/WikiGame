@@ -1,6 +1,6 @@
-# This project aims at making a bot play the Wikipedia game
+# A bot playing the Wikipedia game
 
-A Python script to play the [WikiGame](https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game)
+This project uses **Python** to play the [WikiGame](https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game)
 automatically.
 
 ## Strategies :
@@ -15,24 +15,24 @@ automatically.
         _Better when facing the previous issue_
 
 ## Tools:
-* Request to call the Wikipedia API
-* BeautifulSoup to parse html
-* Spacy to find similarities with NLP
+* `Request` to call the Wikipedia API
+* `BeautifulSoup` to parse html
+* `Spacy` to find similarities with NLP
 
 ## Choose a spacy ressource :
 Download ressource (https://spacy.io/models/en) :  
 * Small :  
-python -m spacy download en_core_web_sm  
+`python -m spacy download en_core_web_sm`  
 * Medium :  
-python -m spacy download en_core_web_md  
+`python -m spacy download en_core_web_md`  
 * Large :  
-python -m spacy download en_core_web_lg  
+`python -m spacy download en_core_web_lg`  
 
-In spacyTools.py choose between 'sm', 'md' and 'lg' by editing the following line :  
-nlp = spacy.load('en_core_web_lg')
+In spacyTools.py choose between `'sm'`, `'md'` and `'lg'` by editing the following line :  
+`nlp = spacy.load('en_core_web_lg')`
 
 ## Run :
-python main.py
+`python main.py`
 
 ## Example : 
 ![Example](example.png)
