@@ -11,7 +11,7 @@ automatically.
     * **Max** : similarity is computed as the max similarity between words from the two strings  
         _Could get stuck in pages about Turkey (country) when trying to get to Bacon_
         
-    * **Mean** : Similarity is computed as the average similarity between verds from the two strings  
+    * **Mean** : Similarity is computed as the average similarity between words from the two strings  
         _Better when facing the previous issue_
 
 ## Tools:
