@@ -7,7 +7,6 @@ class WikiParser:
     S = requests.Session()
 
     def pageExists(self, name): # TODO fix this
-        print("Checking if page : " + name + " exists")
         PARAMS = {
             "action": "parse",
             "page": name,
@@ -15,12 +14,12 @@ class WikiParser:
         }
         R = self.S.get(url=self.URL, params=PARAMS)
         DATA = R.json()
-        page = DATA["parse"]["text"]["*"]
-        soup = BeautifulSoup.BeautifulSoup(page, "html.parser")
-        output = str(soup.p)
-        #print(output)
-        output = output[11 + len(name):len(name)+24]
-        return len(output) > 11 and not(output == "may refer to:")
+        try:
+            page = DATA["parse"]["text"]["*"]
+            #soup = BeautifulSoup.BeautifulSoup(page, "html.parser")
+            return True
+        except:
+            return False
 
     def getPage(self, name):
         print("getting page : " + name)

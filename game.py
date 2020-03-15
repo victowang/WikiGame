@@ -81,6 +81,9 @@ class Game:
                     if similarity > max_similarity and not (word in self.visited):
                         max_similarity = similarity
                         max_word = word
+            if(max_word == ""):
+                print("I am stuck in a page without unvisited links")
+                return
             self.visited.append(max_word)
             self.current=max_word
             self.score += 1
