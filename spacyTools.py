@@ -27,4 +27,5 @@ def getMeanSimilarity(current, end):
     return similarity/i
 
 if __name__ == "__main__":
-    print(getSimilarity("International Standard Book Number", "Cat"))
+    #print(getSimilarity("International Standard Book Number", "Cat"))
+    pass

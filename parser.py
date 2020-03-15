@@ -6,7 +6,8 @@ class WikiParser:
     URL = "https://en.wikipedia.org/w/api.php"
     S = requests.Session()
 
-    def pageExists(self, name):
+    def pageExists(self, name): # TODO fix this
+        print("Checking if page : " + name + " exists")
         PARAMS = {
             "action": "parse",
             "page": name,
@@ -17,6 +18,7 @@ class WikiParser:
         page = DATA["parse"]["text"]["*"]
         soup = BeautifulSoup.BeautifulSoup(page, "html.parser")
         output = str(soup.p)
+        #print(output)
         output = output[11 + len(name):len(name)+24]
         return len(output) > 11 and not(output == "may refer to:")
 

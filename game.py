@@ -23,16 +23,16 @@ class Game:
         wikiParser = parser.WikiParser()
         is_valid = True
         if not wikiParser.pageExists(self.start):
-            print("tha page " + self.start + " doesn't exist")
+            print("the page " + self.start + " doesn't exist")
             is_valid = False
         if not wikiParser.pageExists(self.end):
-            print("tha page " + self.end + " doesn't exist")
+            print("the page " + self.end + " doesn't exist")
             is_valid = False
         return is_valid
 
     def randomPlayer(self):
         self.__init__(self.start, self.end)
-        print("start :" + self.start + ", goal :" + self.end)
+        print("start : " + self.start + ", goal : " + self.end)
         wikiParser = parser.WikiParser()
         while self.current != self.end and self.score < self.max_iter:
             page = wikiParser.getPage(self.current)
@@ -51,7 +51,7 @@ class Game:
 
     def nlpMeanPlayer(self):
         self.__init__(self.start, self.end)
-        print("Start :" + self.start + ", Goal :" + self.end)
+        print("Start : " + self.start + ", Goal : " + self.end)
         wikiParser = parser.WikiParser()
         while self.current != self.end and self.score < self.max_iter:
             page = wikiParser.getPage(self.current)
@@ -85,9 +85,10 @@ class Game:
             self.current=max_word
             self.score += 1
         print("I loose")
+
     def nlpMaxPlayer(self):
         self.__init__(self.start, self.end)
-        print("Start :" + self.start + ", Goal :" + self.end)
+        print("Start : " + self.start + ", Goal : " + self.end)
         wikiParser = parser.WikiParser()
         while self.current != self.end and self.score < self.max_iter:
             page = wikiParser.getPage(self.current)

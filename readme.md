@@ -20,7 +20,7 @@ automatically.
 * Spacy to find similarities with NLP
 
 ## Choose a spacy ressource :
-Download ressource:  
+Download ressource (https://spacy.io/models/en) :  
 * Small :  
 python -m spacy download en_core_web_sm  
 * Medium :  
@@ -30,3 +30,9 @@ python -m spacy download en_core_web_lg
 
 In spacyTools.py choose between 'sm', 'md' and 'lg' by editing the following line :  
 nlp = spacy.load('en_core_web_lg')
+
+## Run :
+python main.py
+
+## Example : 
+![Example](example.png)
